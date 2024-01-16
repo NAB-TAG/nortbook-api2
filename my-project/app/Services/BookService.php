@@ -10,6 +10,16 @@ use Cookie;
 
 class BookService
 {
+    
+    
+    public function index()
+    {
+        $books = Book::orderBy('id', 'asc')->paginate(
+                $perPage = 12, $columns = [ "*" ]
+            )->onEachSide(0);
+            return $books;
+    }
+        
     public function store( array $data )
     {
         $book = new Book();
@@ -25,13 +35,13 @@ class BookService
             return response()->json(["error", "Failed operation", "The book has can not registered for a problem the server, cominicate have the admin."], 500);
         }
     }
-
-
-    public function index()
+    
+    public function show( string $search )
     {
-        $books = Book::orderBy('id', 'asc')->paginate(
-                $perPage = 12, $columns = [ "*" ]
-            )->onEachSide(0);
+        // return $search;
+        $books = Book::orderBy('id', 'asc')->orWhere('author', 'like', "%$search%")->orWhere('publication_year', 'like', "%$search%")->orWhere('title', 'like', "%$search%")->paginate(
+            $perPage = 12, $columns = [ "*" ]
+        )->onEachSide(0);
         return $books;
     }
 

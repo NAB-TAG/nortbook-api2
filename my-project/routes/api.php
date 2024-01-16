@@ -31,6 +31,7 @@ Route::get('/decrypt', [ AuthController::class, 'decrypt' ]);
 // books
 Route::post('/book/create', [ BookController::class, 'store' ]);
 Route::get('/books', [ BookController::class, 'index']);
+Route::get('/books/{search}', [ BookController::class, 'show']);
 Route::put('/book/edit/{id}', [ BookController::class, 'update']);
 Route::delete('/book/delete/{id}', [ BookController::class, 'destroy']);
 

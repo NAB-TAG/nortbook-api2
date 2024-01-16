@@ -50,9 +50,13 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $search)
     {
-        //
+        // Create new book
+        $response = $this->bookService->show( $search );
+
+        // Response
+        return $response;
     }
 
     /**
