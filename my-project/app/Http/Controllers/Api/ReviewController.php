@@ -18,11 +18,11 @@ class ReviewController extends Controller
         $this->reviewService = $reviewService;
     }
     /**
-     * Display a listing of the reviews.
+     * Show all reviews for a given book
      */
     public function index(string $id)
     {
-        // view all reviews
+        // View all reviews of the book with the $id
         $response = $this->reviewService->index($id);
 
         // Response
@@ -30,15 +30,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * create a new review.
      */
     public function store(Request $request, string $id)
     {
@@ -55,23 +47,6 @@ class ReviewController extends Controller
         // Response
         return $response;
     }
-
-    /**
-     * Display the specified review.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        
-    }
-
     /**
      * Update the review.
      */

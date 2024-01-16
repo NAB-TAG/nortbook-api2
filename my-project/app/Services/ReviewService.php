@@ -6,6 +6,20 @@ use App\Models\Review;
 
 class ReviewService
 {
+    /**
+     * Logic to see all the reviews of a certain book
+     */
+    public function index($id)
+    {
+        $reviews = Review::orderBy('id', 'asc')->where('book_id', '=', $id)->paginate(
+            $perPage = 12, $columns = [ "*" ]
+        )->onEachSide(0);
+
+        return $reviews;
+    }
+    /**
+     * Logic to create a review
+     */
     public function store( array $data, string $id )
     {
         $review = new Review();
@@ -15,6 +29,7 @@ class ReviewService
         if(!isset($user)):
             return response()->json(["error", "Failed operation", "There is no connected user."], 201);
         endif;
+
         $review->user_id = $user->id;
         $review->book_id = $id;
         
@@ -25,16 +40,9 @@ class ReviewService
             return response()->json(["error", "Failed operation", "The review has can not registered for a problem the server, cominicate have the admin."], 500);
         }
     }
-
-    public function index($id)
-    {
-        $reviews = Review::orderBy('id', 'asc')->where('book_id', '=', $id)->paginate(
-            $perPage = 12, $columns = [ "*" ]
-        )->onEachSide(0);
-
-        return $reviews;
-    }
-
+    /**
+     * Logic to update a review
+     */
     public function update( array $data, string $id )
     {
         $review = Review::find($id);
@@ -53,7 +61,9 @@ class ReviewService
         }
         return response()->json(["error", "Failed operation", "You did not publish this review."], 505);
     }
-
+    /**
+     * Logic to delete a review
+     */
     public function destroy( string $id )
     {
         $review = Review::find($id);
