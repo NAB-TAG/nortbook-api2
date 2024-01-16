@@ -19,7 +19,7 @@ class BookController extends Controller
         $this->bookValidator = $bookValidator;  
     }
     /**
-     * Display a listing of the resource.
+     * To show a list of books.
      */
     public function index()
     {
@@ -29,7 +29,7 @@ class BookController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * To create a new book.
      */
     public function store(Request $request)
     {
@@ -48,7 +48,7 @@ class BookController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * It shows a list it specifies of books.
      */
     public function show(string $search)
     {
@@ -60,7 +60,7 @@ class BookController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * It upgrades a product in I specify.
      */
     public function update(Request $request, $id)
     {
@@ -79,7 +79,7 @@ class BookController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * To eliminate a product.
      */
     public function destroy(string $id)
     {
