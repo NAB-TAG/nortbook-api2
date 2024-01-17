@@ -57,3 +57,19 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
     * 422: I do not spend a validation.
     * 500: Error on the server.
 
+### Log out
+  * Endpoint: '/api/logout'
+  * Method: GET
+  * Description: Close the session by deleting the cookies used by the front en developer, remember that if you continue passing your BearerToken it will continue to work
+  * Parameters:
+    * none
+  * Responses
+    * 200: Log out successful.
+   
+ ### User Profile
+  * Endpoint: '/api/user_profile'
+  * Method: GET
+  * Description: Shows you the connected user
+  * Parameters:
+    * none
+  * Responses
