@@ -72,12 +72,11 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
     * none
   * Responses
     * 200:
-      ```json
-{
-  "id": 1,
-  "name": "Nando Agustin Bravo",
-  "email": "nicnando123@gmail.com",
-  "email_verified_at": null,
-  "created_at": "2024-01-16T17:46:34.000000Z",
-  "updated_at": "2024-01-16T17:46:34.000000Z"
-}
+ ```json {
+    "id": 1,
+    "name": "Nando Agustin Bravo",
+    "email": "nicnando123@gmail.com",
+    "email_verified_at": null,
+    "created_at": "2024-01-16T17:46:34.000000Z",
+    "updated_at": "2024-01-16T17:46:34.000000Z"
+  }
