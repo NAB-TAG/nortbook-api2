@@ -46,7 +46,7 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
 ### Log in
   * Endpoint: '/api/login'
   * Method: POST
-  * Description: Login a user. Copy the token generated and paste it in the BearerToken in all request to simulate a connected user
+  * Description: Login a user. Copy the token generated and paste it in the BearerToken in all request to simulate a connected   user
   * Parameters:
     * email (email)
     * password (string)
@@ -54,8 +54,6 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
     * 201: Log in successful.
     * 401: You do not have permissions for this action
     * 422: I do not spend a validation.
-    * 422: I do not spend a validation.
-    * 500: Error on the server.
 
 ### Log out
   * Endpoint: '/api/logout'
@@ -73,3 +71,12 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
   * Parameters:
     * none
   * Responses
+    * 200: ```json
+{
+  "id": 1,
+  "name": "Nando Agustin Bravo",
+  "email": "nicnando123@gmail.com",
+  "email_verified_at": null,
+  "created_at": "2024-01-16T17:46:34.000000Z",
+  "updated_at": "2024-01-16T17:46:34.000000Z"
+}
