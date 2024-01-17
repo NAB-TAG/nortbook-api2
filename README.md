@@ -71,7 +71,8 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
   * Parameters:
     * none
   * Responses
-    * 200: ```json
+    * 200:
+      ```json
 {
   "id": 1,
   "name": "Nando Agustin Bravo",
