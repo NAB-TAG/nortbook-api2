@@ -72,7 +72,8 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
     * none
   * Responses
     * 200:
- ```json {
+ ```json
+  {
     "id": 1,
     "name": "Nando Agustin Bravo",
     "email": "nicnando123@gmail.com",
