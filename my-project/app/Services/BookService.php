@@ -93,7 +93,7 @@ class BookService
             if ( $book->delete() ) {
                 return response()->json(["success", "Successful operation", "The book could be deleted without problems."], 201);
             }
-            return response()->json(["error", "Failed operation", "The book could not be deleted."], 201);  
+            return response()->json(["error", "Failed operation", "The book could not be deleted."], 500);  
         }
         
         return response()->json(["error", "Failed operation", "The book is not yours."], 403);       

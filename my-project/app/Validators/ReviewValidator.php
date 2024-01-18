@@ -17,12 +17,12 @@ class ReviewValidator implements ReviewValidatorInterface
         ];
 
         $messages = [
-            'review_text.required' => 'Este comentario es requerido.',
-            'review_text.max' => 'Este comentario no debe tener mas de 625 caracteres.',
-            'review_text.string' => 'Este comentario debe ser un string',
-            'rating.required' => 'La puntuacion es requerida',
-            'rating.integer' => 'La puntuacion debe ser un entero',
-            'rating.between' => 'La puntuacion debe tener entre 1 y 5',
+            'review_text.required' => 'Review is required, please enter one to continue.',
+            'review_text.max' => 'This comment should not be more than 625 characters.',
+            'review_text.string' => 'This comment must be a string.',
+            'rating.required' => 'Rating is required.',
+            'rating.integer' => 'The rating must be an integer.',
+            'rating.between' => 'The rating must be between 1 and 5.',
         ];
 
         // Accedemos a la clase Validator en el espacio de nombres global, no es Illuminate\Contracts\Validation\Validator

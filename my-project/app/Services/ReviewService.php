@@ -11,9 +11,7 @@ class ReviewService
      */
     public function index($id)
     {
-        $reviews = Review::orderBy('id', 'asc')->where('book_id', '=', $id)->paginate(
-            $perPage = 12, $columns = [ "*" ]
-        )->onEachSide(0);
+        $reviews = Review::orderBy('id', 'asc')->where('book_id', '=', $id)->get();
 
         return $reviews;
     }
@@ -27,7 +25,7 @@ class ReviewService
         $review->rating = $data[ 'rating' ];
         $user = auth('sanctum')->user();
         if(!isset($user)):
-            return response()->json(["error", "Failed operation", "There is no connected user."], 201);
+            return response()->json(["error", "Failed operation", "There is no connected user."], 403);
         endif;
 
         $review->user_id = $user->id;
@@ -48,7 +46,7 @@ class ReviewService
         $review = Review::find($id);
         $user = auth('sanctum')->user();
         if(!isset($user)):
-            return response()->json(["error", "Failed operation", "There is no connected user."], 201);
+            return response()->json(["error", "Failed operation", "There is no connected user."], 403);
         endif;
 
         if ( $user->id == $review->user_id) {
@@ -68,6 +66,10 @@ class ReviewService
     {
         $review = Review::find($id);
         $user = auth('sanctum')->user();
+        if(!isset($user)):
+            return response()->json(["error", "Failed operation", "There is no connected user."], 403);
+        endif;
+        
         if ( $user->id != $review->user_id) {
             return response()->json(["error", "Failed operation", "You can not delete a review that is not yours."], 505);
         }
