@@ -252,4 +252,43 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
       }
     ]
 
-### 
+### Create a review of a certain book
+  * Endpoint: '/api/reviews/create/{id_book}'
+  * Method: POST
+  * Description: create a review for a specific book
+  * Parameters:
+    * review_text (string)
+    * rating (int)
+  * Responses
+    * 201: successful review creation.
+    * 403: There is no user logged in
+    * 422: I do not spend a validation.
+    * 500: Error on the server.
+
+### Update a review of a certain book
+  * Endpoint: '/api/reviews/edit/{id_book}'
+  * Method: PUT
+  * Description: Update a review for a specific book
+  * Parameters:
+    * review_text (string)
+    * rating (int)
+  * Responses
+    * 201: successful review update.
+    * 403: There is no user logged in
+    * 422: I do not spend a validation.
+    * 500: Error on the server.
+    * 505: You did not publish this review
+   
+### Delete a review of yours
+  * Endpoint: '/api/reviews/delete/{id_book}'
+  * Method: DELETE
+  * Description: Delete a review for a specific book
+  * Parameters:
+    * none
+  * Responses
+    * 201: successful review update.
+    * 403: There is no user logged in
+    * 422: I do not spend a validation.
+    * 500: Error on the server.
+    * 505: You did not publish this review
+   
