@@ -13,7 +13,9 @@ class BookService
      */
     public function index()
     {
-        $books = Book::orderBy('id', 'asc')->paginate(
+        $books = Book::orderBy('id', 'asc')
+            ->with('reviews')
+            ->paginate(
                 $perPage = 12, $columns = [ "*" ]
             )->onEachSide(0);
             return $books;
@@ -27,7 +29,7 @@ class BookService
         $book->title = $data[ "title" ];
         $book->publication_year = $data[ "publication_year" ];
         $user = auth('sanctum')->user();
-        $book->author = $user->name;
+        $book->author = $user->pseudonym;
 
         // To verify if the user this connected.
         if(!isset($user)):
@@ -47,6 +49,7 @@ class BookService
     public function show( string $search )
     {
         $books = Book::orderBy('id', 'asc')
+            ->with('reviews')
             ->orWhere('author', 'like', "%$search%")
             ->orWhere('publication_year', 'like', "%$search%")
             ->orWhere('title', 'like', "%$search%")
@@ -67,7 +70,7 @@ class BookService
             return response()->json(["error", "Failed operation", "There is no connected user."], 403);
         endif;
         
-        if ( $user->name == $book->author) {
+        if ( $user->pseudonym == $book->author) {
             $book->title = $data[ 'title' ];
             $book->publication_year = $data[ "publication_year" ];
             $book->author = $user->name;

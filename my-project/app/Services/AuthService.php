@@ -14,6 +14,7 @@ class AuthService
     {
         $user = new User();
         $user->name = $data[ "name" ];
+        $user->pseudonym = $data[ "pseudonym" ];
         $user->email = $data[ "email" ];
         $user->password = Hash::make($data[ "password" ]);
 
@@ -58,6 +59,9 @@ class AuthService
     public function logout()
     {
         $cookie = Cookie::forget('auth_token');
+        $user = auth('sanctum')->user();
+        $user->currentAccessToken()->delete();
+        
         return response()->json(["success", "Good!", "You just closed session"], 200);
     }
 
