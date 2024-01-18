@@ -72,12 +72,88 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
     * none
   * Responses
     * 200:
- ```json
-  {
-    "id": 1,
-    "name": "Nando Agustin Bravo",
-    "email": "nicnando123@gmail.com",
-    "email_verified_at": null,
-    "created_at": "2024-01-16T17:46:34.000000Z",
-    "updated_at": "2024-01-16T17:46:34.000000Z"
-  }
+      ```json
+      {
+        "id": 1,
+        "name": "Nando Agustin Bravo",
+        "email": "nicnando123@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2024-01-16T17:46:34.000000Z",
+        "updated_at": "2024-01-16T17:46:34.000000Z"
+      }
+    * 401: incorrect password and/or email
+
+### Decrypt Token
+  * Endpoint: '/api/decrypt'
+  * Method: GET
+  * Description: Decrypt the cookie used by the front-end developer for later use
+  * Parameters:
+    * none
+  * Responses
+    * 200:
+      ```json
+      ['3|PgfmOAy9K5shxAIVzWcQA4nHPHavD9xBApFAvUQj75b1b8aa']
+
+### Create a book
+  * Endpoint: '/api/book/create'
+  * Method: POST
+  * Description: Create a book
+  * Parameters:
+    * none
+  * Responses
+    * 201: successful book creation.
+    * 403: There is no user logged in
+    * 422: I do not spend a validation.
+    * 500: Error on the server.
+
+### Update a book
+  * Endpoint: '/api/book/edit/{id}'
+  * Method: PUT
+  * Description: Update a specific book
+  * Parameters:
+    * none
+  * Responses
+    * 201: successful book creation.
+    * 403: There is no user logged in
+    * 422: I do not spend a validation.
+    * 500: Error on the server.
+### Show all books
+  * Endpoint: '/api/books'
+  * Method: GET
+  * Description: show all books in a laravel page
+  * Parameters:
+    * none
+  * Responses
+    * 200:
+      ```bash
+      {
+      "current_page": 1,
+      "data": [],
+      "first_page_url": "http://localhost:8000/api/books?page=1",
+      "from": null,
+      "last_page": 1,
+      "last_page_url": "http://localhost:8000/api/books?page=1",
+      "links": [
+        {
+          "url": null,
+          "label": "&laquo; Previous",
+          "active": false
+        },
+        {
+          "url": "http://localhost:8000/api/books?page=1",
+          "label": "1",
+          "active": true
+        },
+        {
+          "url": null,
+          "label": "Next &raquo;",
+          "active": false
+        }
+      ],
+      "next_page_url": null,
+      "path": "http://localhost:8000/api/books",
+      "per_page": 12,
+      "prev_page_url": null,
+      "to": null,
+      "total": 0
+    }
