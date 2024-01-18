@@ -15,7 +15,7 @@ class AuthValidator implements AuthValidatorInterface
         $rules = [
             'name' => ['required', 'max:60', 'string', new ForbiddenWordsRule],
             'email' => ['required', 'max:100', 'email', 'unique:users', new ForbiddenWordsRule],
-            'pseudonym' => ['required', 'max:100', 'string', new ForbiddenWordsRule],
+            'pseudonym' => ['required', 'max:100', 'string', 'unique:users', new ForbiddenWordsRule],
             'password' => ['required', 'min:8', 'max:255', 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'],
             'confirmation_password' => ['required','same:password']
         ];
@@ -31,6 +31,7 @@ class AuthValidator implements AuthValidatorInterface
             'pseudonym.required' => 'The pseudonym is required, please enter a pseudonym to continue.',
             'pseudonym.max' => 'The pseudonym must have less than 100 characters.',
             'pseudonym.string' => 'The pseudonym must be a text.',
+            'pseudonym.unique' => 'There is already a user with that pseudonym, please enter another.',
             'password.required' => 'The password is required, please enter a name to continue.',
             'password.max' => 'The password must have less than 100 characters.',
             'password.regex' => 'The password must have at least one letter capital, a number and a symbol.',
