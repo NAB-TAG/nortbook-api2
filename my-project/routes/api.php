@@ -20,9 +20,7 @@ Route::post('/book/create', [ BookController::class, 'store' ])->middleware('aut
 Route::get('/books', [ BookController::class, 'index']);
 Route::get('/books/{search}', [ BookController::class, 'show']);
 Route::put('/book/edit/{id}', [ BookController::class, 'update'])->middleware('auth:sanctum');
-Route::delete('/book/delete/{id}', [ BookController::class,
-
- 'destroy'])->middleware('auth:sanctum');
+Route::delete('/book/delete/{id}', [ BookController::class,'destroy'])->middleware('auth:sanctum');
 
 // reviews
 Route::get('/reviews/book/{id}', [ ReviewController::class, 'index' ]);
