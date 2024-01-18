@@ -1,4 +1,30 @@
 # Library Digital Management System
+# Installation
+1. clone the repository
+     ```bash
+     git clone --recursive https://github.com/NAB-TAG/nortbook-api2.git
+2. It is required to have docker desktop installed and started
+3. open a terminal
+4. Navigate to the project directory
+     ```bash
+     cd route/to/project
+5. Crea y levanta los contenedores
+     ```bash
+     docker-compose up -d
+6. once finished install the dependencies using laravel
+     ```bash
+     docker-compose exec myapp composer install
+7. now copy the .env.example and copy and paste it into a new file called .env
+8. now create an api key
+     ```bash
+     docker-compose exec myapp php artisan key:generate
+9. make the migrations and plant the seeds
+    ```bash
+    docker-compose exec app php artisan migrate:refresh
+    docker-compose exec app php artisan db:seed
+10. everything is ready to use!!!
+
+
 
 # Introduction
 This project is a Laravel and MySQL-based backend application for managing a digital library. It includes user authentication, CRUD operations for books and reviews, search functionality, and optional features such as Dockerization. The system adheres to best practices for code clarity, maintainability, security, and error handling.
@@ -58,7 +84,7 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
 ### Log out
   * Endpoint: '/api/logout'
   * Method: GET
-  * Description: Close the session by deleting the cookies used by the front en developer, remember that if you continue passing your BearerToken it will continue to work
+  * Description: Close the session by deleting the cookies used by the front en developer.
   * Parameters:
     * none
   * Responses
