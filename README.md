@@ -99,7 +99,8 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
   * Method: POST
   * Description: Create a book
   * Parameters:
-    * none
+    * title (string)
+    * publication_year (integer)
   * Responses
     * 201: successful book creation.
     * 403: There is no user logged in
@@ -111,12 +112,14 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
   * Method: PUT
   * Description: Update a specific book
   * Parameters:
-    * none
+    * title (string)
+    * publication_year (integer)
   * Responses
     * 201: successful book creation.
     * 403: There is no user logged in
     * 422: I do not spend a validation.
     * 500: Error on the server.
+      
 ### Show all books
   * Endpoint: '/api/books'
   * Method: GET
@@ -128,9 +131,18 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
       ```bash
       {
       "current_page": 1,
-      "data": [],
+      "data": [
+        {
+          "id": 1,
+          "title": "Harry Potter",
+          "author": "Nando Agustin Bravo",
+          "publication_year": 2000,
+          "created_at": "2024-01-18T13:40:21.000000Z",
+          "updated_at": "2024-01-18T13:40:21.000000Z"
+        }
+      ],
       "first_page_url": "http://localhost:8000/api/books?page=1",
-      "from": null,
+      "from": 1,
       "last_page": 1,
       "last_page_url": "http://localhost:8000/api/books?page=1",
       "links": [
@@ -154,6 +166,90 @@ Note: For methods PUT, DELETE, and POST, the response format will be an array of
       "path": "http://localhost:8000/api/books",
       "per_page": 12,
       "prev_page_url": null,
-      "to": null,
-      "total": 0
+      "to": 1,
+      "total": 1
     }
+
+### search books
+  * Endpoint: '/api/books/{search}'
+  * Method: GET
+  * Description: show all books that match the search (author, title, publication_year) on a Laravel page
+  * Parameters:
+    * none
+  * Responses
+    * 200:
+      ```bash
+      {
+      "current_page": 1,
+      "data": [
+        {
+          "id": 1,
+          "title": "Harry Potter",
+          "author": "Nando Agustin Bravo",
+          "publication_year": 2000,
+          "created_at": "2024-01-18T13:40:21.000000Z",
+          "updated_at": "2024-01-18T13:40:21.000000Z"
+        }
+      ],
+      "first_page_url": "http://localhost:8000/api/books?page=1",
+      "from": 1,
+      "last_page": 1,
+      "last_page_url": "http://localhost:8000/api/books?page=1",
+      "links": [
+        {
+          "url": null,
+          "label": "&laquo; Previous",
+          "active": false
+        },
+        {
+          "url": "http://localhost:8000/api/books?page=1",
+          "label": "1",
+          "active": true
+        },
+        {
+          "url": null,
+          "label": "Next &raquo;",
+          "active": false
+        }
+      ],
+      "next_page_url": null,
+      "path": "http://localhost:8000/api/books",
+      "per_page": 12,
+      "prev_page_url": null,
+      "to": 1,
+      "total": 1
+    }
+
+### Delete a book
+  * Endpoint: '/api/book/delete/{id}'
+  * Method: DELETE
+  * Description: Delete a specific book
+  * Parameters:
+    * none
+  * Responses
+    * 201: deleted successful book.
+    * 403: There is no user logged in
+    * 500: Error on the server.
+
+### Show reviews of a certain book
+  * Endpoint: '/api/reviews/book/{id_book}'
+  * Method: GET
+  * Description: Show reviews of a certain book
+  * Parameters:
+    * none
+  * Responses
+    * 200: 
+    ```bash
+    [
+      {
+        "id": 1,
+        "user_id": 1,
+        "book_id": 1,
+        "review_text": "Muy bueno",
+        "rating": 3,
+        "created_at": "2024-01-18T14:07:42.000000Z",
+        "updated_at": "2024-01-18T14:07:42.000000Z"
+      }
+    ]
+
+### 
